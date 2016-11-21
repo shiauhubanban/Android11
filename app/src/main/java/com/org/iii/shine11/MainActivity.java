@@ -23,8 +23,15 @@ public class MainActivity extends AppCompatActivity {
         dbHelper = new MyDBHelper(this,"iii",null,1);
         db = dbHelper.getReadableDatabase();
     }
+    public void delete(View v){
+        // DELETE FROM cust WHERE id = 6 AND cname = 'Shine'
+        db.delete("cust","id = ? AND cname =?",new String[]{"6","Shine"});
+        query(null);
+    }
+
+    //新增
     public void insert(View v){
-        // INSERT INTO cust (cname,birthday,tel) VALUES ('Brad','1999-09-08','123');
+        // INSERT INTO cust (cname,birthday,tel) VALUES ('Shine','1999-09-08','123');
         ContentValues data = new ContentValues();
         data.put("cname", "Shine");
         data.put("birthday", "1999-09-08");
@@ -33,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         query(null);
     }
 
+    //查詢
     public void query(View v){
         textView.setText("");
         // SELECT * FROM cust
