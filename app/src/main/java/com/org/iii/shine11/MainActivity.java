@@ -27,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
     public void insert(View v){
         // INSERT INTO cust (cname,birthday,tel) VALUES ('Shine','1999-09-08','123');
         ContentValues data = new ContentValues();
-        data.put("cname", "Shine");
-        data.put("birthday", "1999-09-08");
+        data.put("cname", "SF");
+        data.put("birthday", "1992-09-08");
         data.put("tel", "123");
         db.insert("cust",null, data);
         query(null);
@@ -55,9 +55,9 @@ public class MainActivity extends AppCompatActivity {
     //查詢
     public void query(View v){
         textView.setText("");
-        // SELECT * FROM cust
+        // SELECT * FROM cust ORDER BY cname DESC
         // db.execSQL("SELECT * FROM cust");
-        Cursor cursor = db.query("cust",null,null,null,null,null,null);
+        Cursor cursor = db.query("cust",null,null,null,null,null,"cname DESC,birthday DESC");
 
         while (cursor.moveToNext()){
             String id = cursor.getString(cursor.getColumnIndex("id"));
