@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView;
     private MyDBHelper dbHelper;
     private SQLiteDatabase db;
+    
 
 
     @Override
