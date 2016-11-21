@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         db.update("cust",data,"id = ? ",new String[]{"7"});
         query(null);
 
-
     }
 
     //查詢
@@ -59,11 +58,12 @@ public class MainActivity extends AppCompatActivity {
         // SELECT * FROM cust
         // db.execSQL("SELECT * FROM cust");
         Cursor cursor = db.query("cust",null,null,null,null,null,null);
+
         while (cursor.moveToNext()){
-            String id = cursor.getString(0);
-            String cname = cursor.getString(1);
-            String birthday = cursor.getString(2);
-            String tel = cursor.getString(3);
+            String id = cursor.getString(cursor.getColumnIndex("id"));
+            String cname = cursor.getString(cursor.getColumnIndex("cname"));
+            String birthday = cursor.getString(cursor.getColumnIndex("birthday"));
+            String tel = cursor.getString(cursor.getColumnIndex("tel"));
             textView.append(id +":"+ cname + ":" + birthday + ":" + tel + "\n");
         }
     }
